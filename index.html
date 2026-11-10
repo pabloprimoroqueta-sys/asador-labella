@@ -1,0 +1,1132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asador Labella · Carnes a la brasa en Pinos Genil</title>
+<meta name="description" content="Asador Labella, desde 1992 en Pinos Genil (Granada). Carnes maduradas a la brasa, T-Bone, Tomahawk, Wagyu, cochinillo asado y mucho más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Oswald:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#140d09; --bg2:#1c130e; --bg3:#241811; --ink:#f4e9dc; --muted:#b9a593;
+  --gold:#e8c46a; --gold-ink:#2a1a0c; --ember:#ff7a2f; --line:rgba(244,233,220,.14);
+  --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --cond:'Oswald','Arial Narrow',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+/* ---------- AVISO COCHINILLO ---------- */
+.ribbon{position:fixed;top:0;left:0;right:0;z-index:55;height:34px;display:flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(90deg,#7c2d12,#c2410c,#7c2d12);font-size:.78rem;letter-spacing:.06em;color:#fff3e6;padding:0 44px;text-align:center;white-space:nowrap;overflow:hidden}
+.ribbon a{text-decoration:underline;font-weight:600}
+.ribbon .x{position:absolute;right:10px;background:none;border:0;color:#fff3e6;font-size:1.1rem;cursor:pointer;opacity:.8}
+body.no-ribbon .ribbon{display:none}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;left:0;right:0;top:34px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,4vw,48px);transition:background .4s,backdrop-filter .4s,padding .4s,top .3s}
+body.no-ribbon .nav{top:0}
+.nav.solid{background:rgba(20,13,9,.78);backdrop-filter:blur(14px);padding-block:10px;border-bottom:1px solid var(--line)}
+.logo{display:flex;flex-direction:column;align-items:center;line-height:1}
+.logo small{font-family:var(--cond);font-weight:500;font-size:.6rem;letter-spacing:.42em;color:var(--muted);margin-left:.42em}
+.logo b{font-family:var(--cond);font-weight:600;font-size:1.55rem;letter-spacing:.08em}
+.logo i{font-style:normal;font-size:.5rem;letter-spacing:.3em;color:var(--gold);margin-top:3px}
+.nav ul{display:flex;gap:26px;list-style:none;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.nav ul a{opacity:.8;transition:opacity .2s,color .2s}
+.nav ul a:hover{opacity:1;color:var(--gold)}
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--gold-ink);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;border-radius:999px;border:0;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.pill:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(232,196,106,.6)}
+.pill.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.burger{display:none;background:none;border:0;color:var(--ink);font-size:1.6rem;cursor:pointer}
+
+/* ---------- HERO SCROLLY ---------- */
+.scrolly{position:relative;height:600vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.fx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.fire-vid{position:absolute;left:0;top:0;object-fit:cover;mix-blend-mode:screen;pointer-events:none;opacity:0;-webkit-mask-image:radial-gradient(ellipse 50% 58% at 50% 62%,#000 35%,rgba(0,0,0,.6) 65%,transparent 100%);mask-image:radial-gradient(ellipse 50% 58% at 50% 62%,#000 35%,rgba(0,0,0,.6) 65%,transparent 100%)}
+.hero3d-wrap{position:absolute;inset:0;perspective:1300px;pointer-events:none}
+#hero3d{position:absolute;left:63%;top:58%;width:0;height:0;transform-style:preserve-3d;transform-origin:0 0}
+#hero3d .mk{position:absolute;left:0;top:0;width:1px;height:1px}
+.h-grill{position:absolute;left:-220px;top:-250px;width:440px;height:500px;max-width:none;transform:translateZ(0)}
+.h-shadow{position:absolute;left:-118px;top:-150px;width:236px;height:290px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.85),rgba(0,0,0,.4) 60%,transparent);opacity:0}
+.h-steak{position:absolute;left:-122px;top:-148px;width:244px;height:295px;transform-style:preserve-3d;transform:translate3d(0,0,900px)}
+.h-steak img{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none}
+.h-steak .face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.h-steak .warm{opacity:0}
+.h-fork{position:absolute;left:-170px;top:-14px;width:340px;height:28px;transform-style:preserve-3d}
+.h-fork img{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none}
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 60% 55%,transparent 35%,rgba(10,6,4,.75) 100%)}
+.copy{position:absolute;left:clamp(16px,6vw,96px);top:52%;transform:translateY(-50%);width:min(450px,42vw);z-index:2}
+.kicker{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:28px;height:1px;background:var(--gold)}
+.title{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,5.4vw,4.6rem);line-height:.98;letter-spacing:-.01em;text-transform:uppercase}
+.sub{color:var(--muted);margin-top:20px;max-width:38ch;font-size:1rem}
+.feature{display:flex;align-items:center;gap:14px;margin-top:30px}
+.feature .dot{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffb36b,#c2410c 55%,#3b1206);box-shadow:0 0 30px rgba(255,122,47,.55);flex:none}
+.feature b{font-family:var(--serif);font-weight:600;font-size:1.5rem;color:var(--gold);line-height:1.05;display:block}
+.feature span{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.copy .pill{margin-top:28px}
+.swap{transition:opacity .45s ease,transform .45s ease}
+.swap.out{opacity:0;transform:translateY(14px)}
+.rail{position:absolute;right:clamp(16px,3vw,44px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;z-index:2}
+.rail .track{position:absolute;top:14px;bottom:14px;width:1px;background:var(--line);left:50%}
+.rail .fill{position:absolute;top:14px;width:1px;background:var(--gold);left:50%;height:0}
+.rail button{position:relative;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--muted);font-size:.62rem;font-weight:600;cursor:pointer;margin:22px 0;transition:all .3s}
+.rail button.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold);transform:scale(1.15)}
+.rail button span{position:absolute;right:40px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .3s;pointer-events:none}
+.rail button.on span,.rail button:hover span{opacity:.85}
+.corner{position:absolute;bottom:26px;z-index:2;width:46px;height:46px;border-radius:50%;background:var(--gold);color:var(--gold-ink);display:grid;place-items:center;font-size:1.1rem;border:0;cursor:pointer;transition:transform .25s}
+.corner:hover{transform:scale(1.08)}
+.corner.l{left:clamp(16px,4vw,48px)} .corner.r{right:clamp(16px,4vw,48px)}
+.hint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:10px;transition:opacity .5s;z-index:2}
+.hint i{width:1px;height:38px;background:linear-gradient(var(--gold),transparent);animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.progress-bar{position:absolute;left:0;top:0;height:2px;background:linear-gradient(90deg,var(--ember),var(--gold));width:0;z-index:3}
+
+/* ---------- MARQUEE ---------- */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--bg2)}
+.marquee div{display:flex;gap:48px;width:max-content;animation:mq 36s linear infinite;font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.2rem);text-transform:uppercase;white-space:nowrap}
+.marquee span:nth-child(4n+3){color:var(--gold);font-style:italic}
+.marquee span:nth-child(even){color:var(--ember)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- GENERAL ---------- */
+section.block{padding:clamp(80px,11vw,140px) clamp(16px,6vw,96px)}
+.eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,5vw,4rem);line-height:1;text-transform:uppercase;max-width:16ch}
+.lead{color:var(--muted);max-width:52ch;margin-top:22px;font-size:1.05rem}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- LOGO 3D ---------- */
+.logo3d-stage{position:relative;height:clamp(320px,36vw,480px);perspective:900px;display:grid;place-items:center}
+.logo3d{position:relative;display:flex;flex-direction:column;align-items:center;transform-style:preserve-3d;transition:transform .2s ease-out;color:var(--ink)}
+.l-asador{font-family:var(--cond);font-weight:500;font-size:clamp(1rem,2.2vw,1.8rem);letter-spacing:.6em;margin-left:.6em;color:var(--muted);transform:translateZ(30px)}
+.l-name{font-family:var(--cond);font-weight:600;font-size:clamp(4.2rem,11vw,10rem);line-height:.9;letter-spacing:.04em;transform:translateZ(60px);
+  background:linear-gradient(100deg,#f4e9dc 0%,#f4e9dc 40%,#ffe39a 48%,#fff6dc 50%,#ffe39a 52%,#f4e9dc 60%,#f4e9dc 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 5s ease-in-out infinite;filter:drop-shadow(0 12px 24px rgba(0,0,0,.6))}
+@keyframes sheen{0%{background-position:100% 0}60%,100%{background-position:-50% 0}}
+.l-stars{display:flex;gap:.5em;margin-top:14px;font-size:clamp(1rem,2vw,1.6rem);transform:translateZ(40px)}
+.l-stars i{font-style:normal;color:#5a4320;transition:color .4s,text-shadow .4s,transform .4s}
+.l-stars i.on{color:var(--gold);text-shadow:0 0 14px rgba(232,196,106,.8);transform:scale(1.15)}
+.l-est{font-family:var(--cond);font-size:clamp(.8rem,1.4vw,1.1rem);letter-spacing:.4em;color:var(--gold);margin-top:10px;transform:translateZ(25px)}
+.l-ember{position:absolute;left:10%;right:10%;bottom:-40px;height:60px;background:radial-gradient(closest-side,rgba(255,110,30,.55),transparent);filter:blur(8px);transform:translateZ(-40px);animation:breathe 3s ease-in-out infinite}
+/* ---------- (antigua pieza 3D) ---------- */
+.pieza{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:center;overflow:hidden;background:radial-gradient(ellipse at 70% 60%,#3a1c0e 0%,var(--bg) 60%)}
+.price-tag{display:inline-flex;align-items:baseline;gap:14px;margin-top:28px;padding:14px 22px;border:1px solid var(--line);border-radius:16px;background:rgba(0,0,0,.25)}
+.price-tag b{font-family:var(--serif);font-size:2rem;color:var(--gold)}
+.price-tag span{color:var(--muted);font-size:.85rem}
+.views{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.vbtn{background:transparent;border:1px solid var(--line);color:var(--ink);padding:10px 16px;border-radius:999px;font:500 .74rem var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.vbtn:hover{border-color:var(--gold)}
+.vbtn.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.drag-hint{font-size:.72rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:14px}
+.stage3d{position:relative;height:min(620px,80vw);perspective:1100px;cursor:grab;touch-action:pan-y;user-select:none}
+.stage3d:active{cursor:grabbing}
+.scene3d{position:absolute;left:50%;top:50%;width:560px;height:470px;margin:-235px 0 0 -280px;transform-style:preserve-3d;transition:opacity .5s;will-change:transform}
+.scene3d .l{position:absolute;pointer-events:none;transform-style:preserve-3d}
+.scene3d .glow{left:40px;top:40px;width:480px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,110,30,.55),rgba(255,70,10,.15) 45%,transparent 70%);filter:blur(8px);animation:breathe 3.2s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.65;transform:translateZ(-40px) scale(.94)}}
+.scene3d .grill{left:110px;top:30px;width:340px;filter:drop-shadow(0 30px 25px rgba(0,0,0,.6))}
+.scene3d .fork{left:0;top:40px;width:96px;filter:drop-shadow(0 22px 14px rgba(0,0,0,.55))}
+.scene3d .steak{left:150px;top:55px;width:260px;filter:drop-shadow(0 40px 30px rgba(0,0,0,.65))}
+.ember{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffb057;box-shadow:0 0 8px #ff7a2f;opacity:0;animation:rise 3s linear infinite}
+@keyframes rise{0%{opacity:0;transform:translateZ(0)}15%{opacity:1}100%{opacity:0;transform:translateZ(260px) translateY(-30px)}}
+.viewimg{position:absolute;left:50%;top:50%;width:min(620px,92%);transform:translate(-50%,-50%) rotateY(70deg) scale(.85);opacity:0;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .5s;pointer-events:none;filter:drop-shadow(0 30px 30px rgba(0,0,0,.6))}
+.viewimg.on{opacity:1;transform:translate(-50%,-50%) rotateY(0) scale(1)}
+.viewimg.out{transform:translate(-50%,-50%) rotateY(-70deg) scale(.85)}
+.stage3d.flat .scene3d{opacity:0}
+
+/* ---------- VITRINA (carrusel circular) ---------- */
+.vitrina{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(20px,4vw,60px);align-items:center;background:var(--bg2);overflow:hidden}
+.ring{position:relative;height:clamp(380px,40vw,520px)}
+.ring-plate{position:absolute;left:50%;top:50%;width:min(84%,720px);aspect-ratio:2.1/1;transform:translate(-50%,-50%);border-radius:50%;border:1px dashed rgba(232,196,106,.35);background:radial-gradient(ellipse,rgba(232,196,106,.08),transparent 70%)}
+.ring-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+.ring-center small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.ring-center span{font-family:var(--serif);font-size:1.6rem;color:var(--gold)}
+.rcard{position:absolute;left:0;top:0;width:clamp(150px,17vw,210px);padding:16px 14px;border-radius:18px;background:var(--bg3);border:1px solid var(--line);color:var(--ink);text-align:center;cursor:pointer;font:inherit;transition:border-color .4s,background .4s,box-shadow .4s;will-change:transform}
+.rcard h3{font-family:var(--serif);font-weight:600;font-size:clamp(.95rem,1.4vw,1.15rem);line-height:1.15}
+.rcard b{display:block;margin-top:8px;font-family:var(--serif);font-weight:600;font-size:clamp(1rem,1.6vw,1.3rem);color:var(--gold)}
+.rcard.on{border-color:var(--gold);background:linear-gradient(160deg,#3d2815,#1c130e);box-shadow:0 24px 50px -12px rgba(232,196,106,.45)}
+
+/* ---------- COCHINILLO ---------- */
+.cochi{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,80px);align-items:center;overflow:hidden;background:
+  radial-gradient(circle at 80% 40%,rgba(255,110,30,.25),transparent 50%),
+  repeating-linear-gradient(90deg,#2a160c 0 120px,#24120a 120px 122px,#2c180d 122px 240px,#24120a 240px 242px);}
+.cochi h2{font-size:clamp(2.6rem,6vw,5rem);color:#ff8a3d;text-shadow:0 0 40px rgba(255,110,30,.35)}
+.cochi .days{display:inline-block;margin-top:22px;padding:10px 18px;background:rgba(0,0,0,.45);border-left:3px solid var(--ember);font-family:var(--serif);font-size:1.3rem}
+.cochi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+.cochi-grid div{background:rgba(0,0,0,.35);border:1px solid rgba(255,138,61,.3);border-radius:16px;padding:18px}
+.cochi-grid b{display:block;font-family:var(--serif);font-size:1.9rem;color:#ff8a3d;line-height:1}
+.cochi-grid span{display:block;font-size:.8rem;color:var(--muted);margin-top:6px}
+.countdown{display:flex;gap:10px;margin-top:22px}
+.countdown div{background:rgba(0,0,0,.4);border-radius:12px;padding:10px 14px;text-align:center;min-width:70px}
+.countdown b{display:block;font-family:var(--serif);font-size:1.8rem;line-height:1}
+.countdown span{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.pig-wrap{position:relative}
+.pig-inner{position:absolute;inset:0;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.pig-inner.hop{animation:hop .6s cubic-bezier(.3,1.5,.5,1)}
+@keyframes hop{30%{translate:0 -6%}60%{translate:0 0}}
+.pig-inner.vid{mix-blend-mode:screen}
+.pig-vid{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;-webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 12%,#000 86%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 12%,#000 86%,transparent);mask-composite:intersect}
+.pig-badge{position:absolute;right:6%;top:6%;background:rgba(0,0,0,.55);border:1px solid rgba(255,138,61,.5);border-radius:16px;padding:8px 14px;text-align:center;backdrop-filter:blur(4px);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.pig-badge b{display:block;font-family:var(--serif);font-size:1.4rem;color:#ff8a3d;line-height:1.1}
+.pig-badge span{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#e6cbb4}
+.pig-badge.pop{transform:scale(1.18) rotate(-4deg)}
+.pig-ctrl{display:flex;justify-content:center;gap:10px;margin-top:8px}
+.pig-ctrl button{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,138,61,.45);background:rgba(0,0,0,.35);color:#fff3e6;font-size:1.05rem;cursor:pointer;transition:transform .2s,background .2s}
+.pig-ctrl button:hover{background:#c2410c;transform:translateY(-2px)}
+.pig-ctrl button.on{background:#c2410c}
+.porc{background:rgba(0,0,0,.35);border:1px solid rgba(255,138,61,.3);border-radius:16px;padding:18px;color:var(--ink);text-align:left;cursor:pointer;font:inherit;transition:transform .25s,border-color .25s,background .25s}
+.porc:hover{transform:translateY(-3px);border-color:#ff8a3d}
+.porc.on{background:linear-gradient(160deg,#7c2d12,#3a1508);border-color:#ff8a3d;box-shadow:0 14px 34px -12px rgba(255,110,30,.55)}
+.pig-stage{position:relative;height:clamp(340px,40vw,500px);cursor:grab;touch-action:pan-y}
+.pig-stage:active{cursor:grabbing}
+.pig-stage canvas{display:block;width:100%!important;height:100%!important}
+.pig-stage::after{content:"";position:absolute;left:15%;right:15%;bottom:4%;height:12%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);z-index:-1}
+.pig-hint{text-align:center;color:var(--muted);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+.oink{position:absolute;left:58%;top:12%;font-family:var(--serif);font-weight:800;font-size:1.6rem;color:#fff3e6;background:#c2410c;padding:6px 16px;border-radius:999px;transform:scale(0) rotate(-8deg);transition:transform .35s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
+.oink.show{transform:scale(1) rotate(-8deg)}
+.poster{position:relative;justify-self:center;width:min(380px,90%);transform:rotate(3deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.poster:hover{transform:rotate(0) scale(1.03)}
+.poster img{border-radius:6px;box-shadow:0 40px 80px -20px rgba(0,0,0,.8),0 0 0 8px rgba(255,255,255,.04)}
+.poster::before{content:"";position:absolute;top:-14px;left:50%;width:90px;height:28px;margin-left:-45px;background:rgba(255,255,255,.18);transform:rotate(-4deg);backdrop-filter:blur(2px);z-index:2}
+.cochi .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ---------- CARTA ---------- */
+.menu-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.menu-tools{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:44px}
+.search{flex:1 1 260px;max-width:380px;position:relative}
+.search input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:12px 18px 12px 42px;font:400 .95rem var(--sans);outline:none}
+.search input:focus{border-color:var(--gold)}
+.search::before{content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-52%);color:var(--muted);font-size:1.2rem}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;margin-top:22px;scrollbar-width:thin}
+.tab{flex:none;background:transparent;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:999px;font:500 .76rem var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.tab:hover{border-color:var(--gold)}
+.tab.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.cat-note{color:var(--gold);font-size:.82rem;letter-spacing:.06em;margin-top:24px;min-height:1.2em}
+.dishes{display:grid;grid-template-columns:1fr 1fr;gap:0 70px;margin-top:10px}
+.dish{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:20px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(14px);animation:pop .5s forwards}
+@keyframes pop{to{opacity:1;transform:none}}
+.dish h3{font-family:var(--serif);font-weight:600;font-size:1.18rem;line-height:1.25}
+.dish .price{font-family:var(--serif);color:var(--gold);font-size:1.15rem;white-space:nowrap}
+.dish p{grid-column:1/-1;color:var(--muted);font-size:.88rem}
+.dish .cat{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember);grid-column:1/-1}
+.tag{display:inline-block;font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--ember);color:var(--ember);padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
+.menu-foot{margin-top:40px;color:var(--muted);font-size:.88rem;display:flex;gap:10px 30px;flex-wrap:wrap}
+.menu-foot span::before{content:"✦ ";color:var(--gold)}
+.empty{grid-column:1/-1;color:var(--muted);padding:30px 0}
+
+/* ---------- LOCAL ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:60px;border:1px solid var(--line)}
+.stat{background:var(--bg);padding:34px 26px}
+.stat b{font-family:var(--serif);font-size:clamp(2.2rem,4.4vw,3.6rem);font-weight:800;color:var(--gold);line-height:1;display:block}
+.stat span{color:var(--muted);font-size:.88rem;display:block;margin-top:10px}
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(160px,18vw,260px);gap:14px;margin-top:60px}
+.gallery figure{position:relative;overflow:hidden;border-radius:20px;cursor:zoom-in;border:1px solid var(--line)}
+.gallery figure:nth-child(1){grid-column:span 4;grid-row:span 2}
+.gallery figure:nth-child(2){grid-column:span 2;grid-row:span 2}
+.gallery figure:nth-child(3){grid-column:span 3;grid-row:span 2}
+.gallery figure:nth-child(4){grid-column:span 3;grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.gallery figure:hover img{transform:scale(1.07)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;background:linear-gradient(transparent,rgba(10,6,4,.85));font-family:var(--serif);font-size:1.05rem}
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(10,6,4,.94);display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-height:86vh;width:auto;border-radius:12px}
+.lightbox button{position:absolute;top:16px;right:20px;background:none;border:0;color:var(--ink);font-size:2.2rem;cursor:pointer}
+
+/* ---------- RESERVAS ---------- */
+.reserve{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:start}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,38px)}
+label{display:flex;flex-direction:column;gap:7px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+label.full{grid-column:1/-1}
+input,select,textarea{background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:13px 14px;font:400 1rem var(--sans);letter-spacing:0;text-transform:none;outline:none;transition:border-color .2s;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+textarea{min-height:90px;resize:vertical}
+form .pill{grid-column:1/-1;justify-content:center;padding:16px}
+.info{display:grid;gap:22px;margin-top:36px}
+.info div{border-top:1px solid var(--line);padding-top:16px}
+.info b{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:600;margin-bottom:4px}
+.info span,.info a{color:var(--muted)}
+.info a:hover{color:var(--gold)}
+.map{margin-top:30px;border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--bg2)}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.05)}
+
+footer{border-top:1px solid var(--line);padding:50px clamp(16px,6vw,96px);display:flex;justify-content:space-between;gap:20px 30px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:.85rem}
+footer .big{font-family:var(--cond);font-size:clamp(3.4rem,13vw,10rem);font-weight:600;color:var(--ink);line-height:.9;width:100%;letter-spacing:.04em}
+footer .big em{font-style:normal;color:var(--gold);font-size:.25em;letter-spacing:.3em;vertical-align:top;display:block;margin-bottom:10px}
+
+.drawer{position:fixed;inset:0;background:rgba(20,13,9,.97);z-index:60;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;font-family:var(--serif);font-size:1.8rem;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .35s}
+.drawer.open{opacity:1;pointer-events:auto}
+.drawer button{position:absolute;top:18px;right:18px;background:none;border:0;color:var(--ink);font-size:2rem;cursor:pointer}
+
+@media (max-width:1100px){ .nav ul{gap:16px;font-size:.7rem} }
+@media (max-width:900px){
+  .ribbon{font-size:.68rem;justify-content:flex-start;padding:0 36px 0 12px}
+  .nav ul,.nav .pill{display:none}
+  .burger{display:block}
+  .copy{top:max(17%,128px);transform:none;width:auto;right:16px}
+  .title{font-size:clamp(2rem,9vw,3rem)}
+  .sub{font-size:.92rem;margin-top:12px}
+  .feature{margin-top:16px}
+  .copy .pill{display:none}
+  .ring{height:520px}
+  .rcard{width:126px;padding:12px 10px}
+  .ring-plate{width:86%;aspect-ratio:1/1.25}
+  .rail{top:auto;bottom:35px;transform:none;flex-direction:row;left:50%;right:auto;translate:-50% 0}
+  .rail .track,.rail .fill,.rail button span{display:none}
+  .rail button{margin:0 8px}
+  .hint{display:none}
+  .pieza,.vitrina,.cochi,.reserve{grid-template-columns:1fr}
+  .stage3d{height:min(480px,110vw)}
+  .scene3d{transform-origin:center}
+  .cochi-grid{grid-template-columns:1fr 1fr 1fr}
+  .cochi-grid b{font-size:1.4rem}
+  .stats{grid-template-columns:1fr 1fr}
+  .dishes{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+  .gallery figure:nth-child(n){grid-column:span 1;grid-row:span 1}
+  .gallery figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+  form{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .marquee div,.scene3d .glow,.ember{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon" id="ribbon">
+  <span id="ribbonText">🔥 Fin de semana del cochinillo · viernes, sábados y domingos · 22 € por ración</span>
+  <a href="#cochinillo">Ver</a>
+  <button class="x" id="ribbonX" aria-label="Cerrar aviso">×</button>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="logo" aria-label="Asador Labella, inicio"><small>ASADOR</small><b>LABELLA</b><i>★★★★★ · EST. 1992</i></a>
+  <ul>
+    <li><a href="#pieza">La casa</a></li>
+    <li><a href="#vitrina">Vitrina</a></li>
+    <li><a href="#cochinillo">Cochinillo</a></li>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#local">El local</a></li>
+    <li><a href="#reservas">Contacto</a></li>
+  </ul>
+  <a href="#reservas" class="pill">Reservar</a>
+  <button class="burger" id="burger" aria-label="Abrir menú">☰</button>
+</nav>
+<div class="drawer" id="drawer">
+  <button id="closeDrawer" aria-label="Cerrar menú">×</button>
+  <a href="#pieza">La casa</a><a href="#vitrina">Vitrina</a><a href="#cochinillo">Cochinillo</a><a href="#carta">Carta</a><a href="#local">El local</a><a href="#reservas">Reservar</a>
+</div>
+
+<!-- ============ HERO: escena que avanza con el scroll ============ -->
+<header class="scrolly" id="top">
+  <div class="stage">
+    <canvas id="fireBack" class="fx" aria-hidden="true"></canvas>
+    <video id="fireVid" class="fire-vid" src="img/fuego.mp4" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+    <div class="hero3d-wrap" aria-hidden="true">
+      <div id="hero3d">
+        <i class="mk" id="mk0" style="transform:translate3d(-200px,-222px,-70px)"></i>
+        <i class="mk" id="mk1" style="transform:translate3d(200px,-222px,-70px)"></i>
+        <i class="mk" id="mk2" style="transform:translate3d(200px,222px,-70px)"></i>
+        <i class="mk" id="mk3" style="transform:translate3d(-200px,222px,-70px)"></i>
+        <img class="h-grill" id="hGrill" src="img/h-parrilla.webp" alt="">
+        <div class="h-shadow" id="hShadow"></div>
+        <div class="h-steak" id="hSteak">
+          <img class="face a" src="img/h-steak-raw.webp" alt="">
+          <img class="face a warm" id="hWarm" src="img/h-steak-warm.webp" alt="">
+          <img class="face b" src="img/h-steak-seared.webp" alt="">
+        </div>
+        <div class="h-fork" id="hFork">
+          <img src="img/h-tenedor-canto.webp" alt="" style="transform:translateZ(-3px)">
+          <img src="img/h-tenedor-canto.webp" alt="" style="transform:translateZ(-1.5px)">
+          <img src="img/h-tenedor-lado.webp" alt="">
+        </div>
+      </div>
+    </div>
+    <canvas id="fireFront" class="fx" aria-hidden="true"></canvas>
+    <div class="vignette"></div>
+    <div class="progress-bar" id="pbar"></div>
+    <div class="copy">
+      <div class="kicker swap" id="kicker">Paso 01</div>
+      <h1 class="title swap" id="title">Entra en la brasa.</h1>
+      <p class="sub swap" id="sub"></p>
+      <div class="feature swap" id="feature">
+        <div class="dot"></div>
+        <div><b id="featName"></b><span id="featMeta"></span></div>
+      </div>
+      <a href="#carta" class="pill">Ver la carta →</a>
+    </div>
+    <div class="rail" id="rail"><div class="track"></div><div class="fill" id="railFill"></div></div>
+    <div class="hint" id="hint">Haz scroll<i></i></div>
+    <button class="corner l" id="prevBtn" aria-label="Paso anterior">←</button>
+    <button class="corner r" id="topBtn" aria-label="Volver arriba">↑</button>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div id="mq"></div></div>
+
+<!-- ============ LA CASA (logo) ============ -->
+<section class="block pieza" id="pieza">
+  <div>
+    <p class="eyebrow reveal">Desde 1992</p>
+    <h2 class="reveal">Fuego, carne y casa.</h2>
+    <p class="lead reveal">Más de 30 años en Pinos Genil cocinando a la brasa: carnes maduradas, asados por encargo y una mesa donde nadie tiene prisa.</p>
+    <div class="views reveal"><a class="pill" href="#carta">Ver la carta →</a><a class="pill ghost" href="#reservas">Reservar mesa</a></div>
+  </div>
+  <div class="logo3d-stage reveal" id="logoStage" aria-label="Logotipo de Asador Labella">
+    <div class="logo3d" id="logo3d">
+      <span class="l-asador">ASADOR</span>
+      <span class="l-name">LABELLA</span>
+      <span class="l-stars" id="lStars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>
+      <span class="l-est">· EST. 1992 ·</span>
+      <span class="l-ember"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VITRINA ============ -->
+<section class="block vitrina" id="vitrina">
+  <div>
+    <p class="eyebrow reveal">La vitrina</p>
+    <h2 class="reveal">Las joyas de la casa.</h2>
+    <p class="lead reveal">Piezas maduradas a la vista. Toca una para traerla al frente, o deja que la vitrina gire sola.</p>
+  </div>
+  <div class="ring reveal" id="ring" aria-label="Carrusel circular con las carnes de la vitrina">
+    <div class="ring-plate"></div>
+    <div class="ring-center"><small>Ahora delante</small><span id="ringIdx">01 / 07</span></div>
+  </div>
+</section>
+
+<!-- ============ COCHINILLO ============ -->
+<section class="block cochi" id="cochinillo">
+  <div>
+    <p class="eyebrow reveal" style="color:#ff8a3d">Solo en fin de semana</p>
+    <h2 class="reveal">Fin de semana del cochinillo.</h2>
+    <p class="lead reveal" style="color:#e6cbb4">Viernes, sábados y domingos. Cochinillo asado, piel crujiente y carne que se deshace. Por ración o entero para la mesa.</p>
+    <div class="days reveal" id="cochiStatus">Viernes, sábados y domingos</div>
+    <div class="countdown reveal" id="countdown"></div>
+    <p class="eyebrow reveal" style="margin:30px 0 12px;color:#ff8a3d">Elige cuánto quieres</p>
+    <div class="cochi-grid reveal" id="porciones" role="radiogroup" aria-label="Elige ración, medio o cochinillo entero">
+      <button type="button" class="porc on" data-i="1" role="radio" aria-checked="true"><b>22 €</b><span>1 ración<br>vie · sáb · dom</span></button>
+      <button type="button" class="porc" data-i="2" role="radio" aria-checked="false"><b>70 €</b><span>½ cochinillo<br>3 personas</span></button>
+      <button type="button" class="porc" data-i="3" role="radio" aria-checked="false"><b>140 €</b><span>cochinillo entero<br>6 personas</span></button>
+    </div>
+    <p class="lead reveal" id="porcNote" style="font-size:.9rem;margin-top:16px">La ración se sirve viernes, sábados y domingos.</p>
+    <div class="btns reveal">
+      <a class="pill" href="#reservas" id="cochiWa">Encargar 1 ración →</a>
+      <a class="pill ghost" href="tel:+34608282455">Llamar · 608 282 455</a>
+    </div>
+  </div>
+  <div class="pig-wrap reveal">
+    <div class="pig-stage" id="pig3d" role="img" aria-label="Cochinillo asado con una manzana en la boca, sobre una fuente que gira">
+      <div class="pig-inner" id="pigInner"></div>
+      <div class="pig-badge" id="pigBadge"><b>22 €</b><span>1 ración</span></div>
+    </div>
+    <div class="oink" id="oink">¡Oink!</div>
+    <div class="pig-ctrl" role="toolbar" aria-label="Controles del cochinillo">
+      <button type="button" id="pigPrev" aria-label="Girar a la izquierda">↺</button>
+      <button type="button" id="pigPlay" aria-label="Pausar el giro">❚❚</button>
+      <button type="button" id="pigNext" aria-label="Girar a la derecha">↻</button>
+      <button type="button" id="pigZoom" aria-label="Ver de cerca">🔍</button>
+      <button type="button" id="pigOink" aria-label="Hacer que diga oink">🐷</button>
+    </div>
+    <p class="pig-hint">Arrástralo para girarlo · tócalo</p>
+  </div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<section class="block" id="carta">
+  <div class="menu-head">
+    <div>
+      <p class="eyebrow reveal">La carta</p>
+      <h2 class="reveal">Del fuego a tu mesa.</h2>
+    </div>
+    <p class="lead reveal" style="margin:0;max-width:38ch">Pregunta por las sugerencias del día y por las piezas de la vitrina.</p>
+  </div>
+  <div class="menu-tools reveal">
+    <label class="search" aria-label="Buscar en la carta"><input id="q" type="search" placeholder="Busca un plato: pulpo, wagyu, tarta…"></label>
+  </div>
+  <div class="tabs reveal" id="tabs"></div>
+  <p class="cat-note" id="catNote"></p>
+  <div class="dishes" id="dishes"></div>
+  <div class="menu-foot">
+    <span>Puedes llevarte tu comida a casa sin coste adicional.</span>
+    <span>Pan sin gluten bajo petición.</span>
+    <span>Consulta los alérgenos de cada plato con nuestro equipo.</span>
+  </div>
+</section>
+
+<!-- ============ EL LOCAL ============ -->
+<section class="block" id="local" style="background:var(--bg2)">
+  <p class="eyebrow reveal">El local</p>
+  <h2 class="reveal">Desde 1992 en Pinos Genil.</h2>
+  <p class="lead reveal">Comedor con vigas de madera, salón acristalado con vistas y una terraza bajo los árboles, a los pies de la sierra. Ven a comer sin prisas.</p>
+  <div class="stats reveal">
+    <div class="stat"><b data-count="1992" data-from="1950">1950</b><span>abrimos nuestras puertas</span></div>
+    <div class="stat"><b data-count="30" data-suffix=" €">0</b><span>los 100 g de Wagyu A5 de Japón</span></div>
+    <div class="stat"><b data-count="1250" data-suffix=" g">0</b><span>pesa nuestro Tomahawk de rubia gallega</span></div>
+    <div class="stat"><b data-count="24" data-suffix=" h">0</b><span>para encargar tu cochinillo</span></div>
+  </div>
+  <div class="gallery" id="gallery">
+    <figure class="reveal"><img src="img/terraza.webp" alt="Terraza bajo los árboles" loading="lazy"><figcaption>La terraza, bajo los árboles</figcaption></figure>
+    <figure class="reveal"><img src="img/fachada.webp" alt="Fachada del Asador Labella" loading="lazy"><figcaption>Nuestra casa</figcaption></figure>
+    <figure class="reveal"><img src="img/salon.webp" alt="Salón acristalado" loading="lazy"><figcaption>Salón acristalado</figcaption></figure>
+    <figure class="reveal"><img src="img/interior.webp" alt="Comedor con vigas de madera" loading="lazy"><figcaption>El comedor</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ RESERVAS ============ -->
+<section class="block" id="reservas">
+  <div class="reserve">
+    <div>
+      <p class="eyebrow reveal">Reservas</p>
+      <h2 class="reveal">Guárdanos un sitio junto al fuego.</h2>
+      <p class="lead reveal">Llámanos o rellena los datos: se abrirá WhatsApp con tu reserva ya escrita y solo tendrás que darle a enviar.</p>
+      <div class="info reveal">
+        <div><b>Dirección</b><a href="https://www.google.com/maps/search/?api=1&query=Asador+Labella+Carretera+de+la+Sierra+8+Pinos+Genil+Granada" target="_blank" rel="noopener">Carretera de la Sierra, nº 8, 2 · 18191 Pinos Genil, Granada</a></div>
+        <div><b>Teléfono</b><a href="tel:+34608282455">608 282 455</a></div>
+        <div><b>Horario</b><span id="horario">Consúltanos por teléfono</span></div>
+      </div>
+      <div class="map reveal"><iframe title="Mapa del Asador Labella" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Asador+Labella,+Carretera+de+la+Sierra+8,+18191+Pinos+Genil,+Granada&output=embed"></iframe></div>
+    </div>
+    <form id="resForm" class="reveal">
+      <label class="full">Nombre<input name="nombre" required autocomplete="name"></label>
+      <label>Fecha<input type="date" name="fecha" required></label>
+      <label>Hora<select name="hora" required></select></label>
+      <label>Personas<select name="personas"></select></label>
+      <label>Zona<select name="zona"><option>Comedor</option><option>Salón acristalado</option><option>Terraza</option></select></label>
+      <label class="full">¿Encargas cochinillo?<select name="cochinillo"><option>No</option><option>Ración (fin de semana)</option><option>½ cochinillo (3 personas)</option><option>Cochinillo entero (6 personas)</option></select></label>
+      <label class="full">Comentarios<textarea name="comentarios" placeholder="Alergias, celebraciones, trona…"></textarea></label>
+      <button class="pill" type="submit">Reservar por WhatsApp →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="big"><em>ASADOR · ★★★★★ · EST. 1992</em>LABELLA</div>
+  <span>© <span id="yr"></span> Asador Labella · Pinos Genil, Granada</span>
+  <span><a href="tel:+34608282455">608 282 455</a> · <a href="#carta">Carta</a> · <a href="#reservas">Reservas</a></span>
+</footer>
+
+<div class="lightbox" id="lightbox"><button aria-label="Cerrar">×</button><img alt=""></div>
+
+<script>
+/* =============== CONFIGURACIÓN EDITABLE =============== */
+const WHATSAPP = '34608282455'; // número para reservas por WhatsApp (sin + ni espacios)
+
+const STEPS = [
+  {k:'Desde 1992',   t:'Enciende la brasa.',   s:'Brasas vivas y llama alta: así empieza cada servicio en Asador Labella desde 1992.',         n:'Brasa viva',       m:'Asador Labella'},
+  {k:'La pieza',     t:'Llega el T-Bone.',     s:'Pieza madurada de nuestra vitrina, directa a la parrilla. Escucha cómo chisporrotea.',       n:'T-Bone steak',     m:'1.250 g · 56 €'},
+  {k:'Sellado',      t:'La brasa trabaja.',    s:'Abajo se forma la costra mientras la grasa cae sobre el fuego y aviva la llama.',            n:'Sellado',          m:'Costra dorada'},
+  {k:'La vuelta',    t:'Vuelta y vuelta.',     s:'El tenedor la levanta y le da la vuelta: marcas de parrilla por fuera, jugosa por dentro.',  n:'Una sola vuelta',  m:'Al punto que pidas'},
+  {k:'A la mesa',    t:'Al punto, a la mesa.', s:'Un toque de sal en escamas y al centro para compartir. Si sobra, te lo llevas sin coste.',   n:'Para compartir',   m:'Llévatelo sin coste'}
+];
+
+// Carnes de la vitrina (nombre y peso/precio, como en las pizarras)
+const CUTS = [
+  {n:'Presa Wagyu A5 · Japón', p:'30 € / 100 g'},
+  {n:'Tomahawk vaca premium', p:'1.350 g · 56 €'},
+  {n:'T-Bone steak', p:'1.350 g aprox. · 56 €'},
+  {n:'Vaca Jersey · U.K.', p:'8 € / 100 g'},
+  {n:'Vaca rubia gallega', p:'7 € / 100 g'},
+  {n:'Vaca Simmental · Alemania', p:'7 € / 100 g'},
+  {n:'Vaca frisona · España', p:'6 € / 100 g'}
+];
+
+// Carta (precios con IVA, tal como aparecen en la carta impresa)
+const MENU = [
+ {c:'Entrantes', items:[
+  ['Ensalada Labella','', '7,50'],
+  ['Tomate con mozzarella de búfala al pesto','', '11,00'],
+  ['Tomate con melva y aguacate','', '11,00'],
+  ['Tomate con anchoas 000 (6 uds.) y aguacate','', '16,00'],
+  ['Ensalada noble','', '11,00'],
+  ['Ensalada César','', '11,00'],
+  ['Salpicón de pulpo y langostinos','', '18,00'],
+  ['Pulpo a la gallega, 200 g','', '19,95'],
+  ['Croqueta de rabo de toro','', '2,50'],
+  ['Croqueta de jamón Duroc y pollo','', '2,50'],
+  ['Parrillada de verduras','', '11,00'],
+  ['Flores de alcachofa con salsa romesco','', '10,00'],
+  ['Morcilla a la brasa','', '10,00'],
+  ['Chorizo a la brasa','', '10,00'],
+  ['El queso de Mercedes, puro de oveja, 150 g','D.O. Don Apolonio. Medalla de Oro en World Cheese 21/22', '15,00','Premiado'],
+  ['Jamón Duroc Batallé Gran Reserva, 150 g','', '15,00'],
+  ['Gambas al pil-pil','', '16,00'],
+  ['Tartar de atún','', '18,00']]},
+ {c:'Carnes y pescados', items:[
+  ['Churrasco "de mamá María"','Churrasco de cerdo al estilo de la casa', '16,00','De la casa'],
+  ['Fingers de pollo con salsa barbacoa','', '11,00'],
+  ['Abanico ibérico','', '18,00'],
+  ['Chuletillas de cordero lechal','', '19,95'],
+  ['Entrecotte de Angus','', '27,50'],
+  ['Secreto de Angus','', '32,00'],
+  ['Solomillo de añojo','', '26,00'],
+  ['Tomahawk de vaca rubia gallega (1.250 g)','', '58,00','Estrella'],
+  ['T-Bone steak, 1.250 g','', '56,00','Estrella'],
+  ['Pollo al curry','', '13,00'],
+  ['Taco de pulpo a la brasa, 250 g','', '22,95'],
+  ['Librito Love cheese Labella (2 personas)','Lomo alto de vaca seleccionada relleno de 3 quesos', '28,00'],
+  ['Parrillada ibérica (900 g aprox.)','', '36,00'],
+  ['Lagarto Duroc','', '15,00'],
+  ['Hamburguesa Wagyu','', '16,00'],
+  ['Atún "vuelta y vuelta"','', '19,95'],
+  ['Bacalao con tomate a las hierbas provenzales','', '18,00']]},
+ {c:'Carnes maduradas', note:'Precio por cada 100 g de pieza.', items:[
+  ['Lomo alto / Chuletón de Irlanda o similar','', '6,00 / 100 g'],
+  ['Frisona nacional o similar','', '6,00 / 100 g'],
+  ['Simmental alemana o similar','', '7,00 / 100 g'],
+  ['Wagyu japonés o similar','', '30,00 / 100 g','Top']]},
+ {c:'Asados', note:'Cochinillo por encargo con 24 h de antelación.', items:[
+  ['½ Cochinillo (3 personas)','', '70,00','Por encargo'],
+  ['1 Cochinillo (6 personas)','', '140,00','Por encargo'],
+  ['Costillas a la miel','', '16,00'],
+  ['Codillo','', '16,00'],
+  ['Pierna de cordero lechal','', '26,00'],
+  ['Costilla de añojo a baja temperatura','', '22,95'],
+  ['Salsas: pimienta verde y Labella (boletus)','', '2,00']]},
+ {c:'Arroces', note:'Precio por persona · mínimo 2 personas · preparación 35 min aprox.', items:[
+  ['Arroz con rabo de toro','', '16,00'],
+  ['Arroz con pulpo, 250 g','', '16,00'],
+  ['Arroz caldoso con boletus y shiitake','', '16,00'],
+  ['Arroz negro con sepia y su tinta','', '16,00']]},
+ {c:'Huevos', items:[
+  ['Rotos con jamón Duroc Batallé Gran Reserva','', '12,00'],
+  ['Rotos con boletus, shiitake y langostinos','', '16,00'],
+  ['Revuelto de morcilla y piñones','Sobre espejo de tomate confitado', '10,00']]},
+ {c:'De cuchara', items:[
+  ['Salmorejo cordobés','', '7,50'],
+  ['"La Pinta" de gazpacho andaluz','', '5,50']]},
+ {c:'Infantil', items:[
+  ['Menú infantil','Fingers de pollo con huevo y patatas fritas, tarta y 1 bebida', '12,00'],
+  ['Ración de pan','', '0,60']]},
+ {c:'Postres', items:[
+  ['Profiteroles con chocolate belga','', '6,50'],
+  ['Tarta de queso y arándanos','', '5,50'],
+  ['Muerte por chocolate','', '5,50'],
+  ['Muerte por coco','', '5,50'],
+  ['Tarta al whisky','', '5,00'],
+  ['Tarta stracciatella','', '5,00'],
+  ['Tiramisú','', '5,50'],
+  ['Helado de coco tropical','', '5,50'],
+  ['Helado de limón tropical','', '5,00'],
+  ['Helado de naranja tropical','', '5,00'],
+  ['Tarta Lotus','', '5,50'],
+  ['Tartufo de chocolate de Dubái','', '5,50','Nuevo'],
+  ['Tartufo de mango y frutas del bosque','', '5,50']]},
+ {c:'Bebidas', items:[
+  ['Refrescos o similar','', '2,50'],
+  ['Aquarius o similar','', '3,00'],
+  ['Copa de Rioja Crianza o similar','', '3,50'],
+  ['Copa de Ribera del Duero Roble o similar','', '3,75'],
+  ['Café o similar','', '1,70']]}
+];
+/* ===================================================== */
+
+const $ = s => document.querySelector(s);
+const clamp = (v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const lerp = (a,b,t)=>a+(b-a)*t;
+const ease = t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const easeOutBack = t=>{const c=1.4;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2)};
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc = s => s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- aviso + navegación ---------- */
+try{ if(sessionStorage.getItem('noRibbon')) document.body.classList.add('no-ribbon'); }catch(e){}
+$('#ribbonX').onclick=()=>{document.body.classList.add('no-ribbon'); try{sessionStorage.setItem('noRibbon','1')}catch(e){}};
+const nav = $('#nav');
+$('#burger').onclick = ()=>$('#drawer').classList.add('open');
+$('#closeDrawer').onclick = ()=>$('#drawer').classList.remove('open');
+document.querySelectorAll('#drawer a').forEach(a=>a.onclick=()=>$('#drawer').classList.remove('open'));
+$('#yr').textContent = new Date().getFullYear();
+
+/* ---------- cochinillo: estado según el día ---------- */
+(function(){
+  const now=new Date(), d=now.getDay(); // 0 dom … 6 sáb
+  const weekend = d===5||d===6||d===0;
+  const st=$('#cochiStatus'), cd=$('#countdown');
+  if(weekend){
+    const name={5:'viernes',6:'sábado',0:'domingo'}[d];
+    st.textContent=`🔥 Hoy es ${name}: ¡hay cochinillo!`;
+    $('#ribbonText').textContent='🔥 Hoy hay cochinillo asado · 22 € por ración · reserva en el 608 282 455';
+    cd.remove();
+  }else{
+    st.textContent='Este viernes vuelve el cochinillo';
+    const fri=new Date(now); fri.setDate(now.getDate()+((5-d+7)%7)); fri.setHours(13,0,0,0);
+    const tick=()=>{
+      let ms=Math.max(0,fri-new Date());
+      const D=Math.floor(ms/864e5); ms-=D*864e5; const H=Math.floor(ms/36e5); ms-=H*36e5; const M=Math.floor(ms/6e4);
+      cd.innerHTML=[[D,'días'],[H,'horas'],[M,'min']].map(([v,l])=>`<div><b>${String(v).padStart(2,'0')}</b><span>${l}</span></div>`).join('');
+    };
+    tick(); setInterval(tick,30000);
+  }
+})();
+
+/* ---------- raíl de pasos (hero) ---------- */
+const rail = $('#rail'), scrolly = $('.scrolly');
+STEPS.forEach((st,i)=>{
+  const b = document.createElement('button');
+  b.innerHTML = String(i+1).padStart(2,'0') + `<span>${st.k}</span>`;
+  b.onclick = ()=>goStep(i);
+  rail.appendChild(b);
+});
+const railBtns = [...rail.querySelectorAll('button')];
+function goStep(i){
+  const total = scrolly.offsetHeight - innerHeight;
+  window.scrollTo({top: scrolly.offsetTop + total * ((i+0.55)/STEPS.length), behavior:'smooth'});
+}
+let curStep = -1;
+$('#prevBtn').onclick = ()=>goStep(Math.max(0,curStep-1));
+$('#topBtn').onclick = ()=>window.scrollTo({top:0,behavior:'smooth'});
+function fillStep(st,i){
+  $('#kicker').textContent = `Paso ${String(i+1).padStart(2,'0')} · ${st.k}`;
+  $('#title').textContent = st.t; $('#sub').textContent = st.s;
+  $('#featName').textContent = st.n; $('#featMeta').textContent = st.m;
+}
+function setStep(i){
+  if(!(i>=0) || i===curStep) return;
+  const first = curStep<0; curStep = i;
+  railBtns.forEach((b,j)=>b.classList.toggle('on',j===i));
+  if(first){ fillStep(STEPS[i],i); return; }
+  const els = ['#kicker','#title','#sub','#feature'].map($);
+  els.forEach((el,j)=>setTimeout(()=>el.classList.add('out'), j*40));
+  setTimeout(()=>{ fillStep(STEPS[i],i); els.forEach((el,j)=>setTimeout(()=>el.classList.remove('out'), j*70)); }, 260);
+}
+
+/* ---------- PORTADA 3D: brasa real, T-Bone que se hace y tenedor que le da la vuelta ---------- */
+function rnd(seed){ return ()=>{ seed=(seed*16807)%2147483647; return (seed-1)/2147483646; }; }
+function easeOutBounce(x){const n=7.5625,d=2.75; if(x<1/d)return n*x*x; if(x<2/d)return n*(x-=1.5/d)*x+.75; if(x<2.5/d)return n*(x-=2.25/d)*x+.9375; return n*(x-=2.625/d)*x+.984375;}
+const stageEl=$('.stage'), wrap3d=$('#hero3d'), hSteak=$('#hSteak'), hWarm=$('#hWarm'), hFork=$('#hFork'), hGrill=$('#hGrill'), hShadow=$('#hShadow');
+const back=$('#fireBack'), front=$('#fireFront'), bc=back.getContext('2d'), fc=front.getContext('2d');
+const mks=[0,1,2,3].map(i=>$('#mk'+i));
+const TH=42, NL=12;            // grosor del chuletón (px de escena) y nº de capas
+hSteak.querySelectorAll('.face.a').forEach(f=>f.style.transform=`translateZ(${TH/2}px)`);
+hWarm.style.transform=`translateZ(${TH/2+.8}px)`;
+hSteak.querySelector('.face.b').style.transform=`translateZ(${-TH/2}px) rotateX(180deg)`;
+const layers=[];
+for(let k=0;k<NL;k++){
+  const im=document.createElement('img'); im.src='img/h-steak-side.webp'; im.alt=''; im.className='side';
+  im.style.transform=`translateZ(${TH/2-1.5-(TH-3)*k/(NL-1)}px)`; hSteak.appendChild(im); layers.push({im,last:-1,k:k/(NL-1)});
+}
+let W=0,H=0,DPR=1,K=1,mobile=false;
+function resize(){
+  DPR=Math.min(devicePixelRatio||1,2); W=stageEl.clientWidth; H=stageEl.clientHeight;
+  [back,front].forEach(c=>{c.width=W*DPR;c.height=H*DPR;});
+  bc.setTransform(DPR,0,0,DPR,0,0); fc.setTransform(DPR,0,0,DPR,0,0);
+  mobile=W<900;
+  K= mobile? Math.min(W/520, H/900) : Math.min(W/1300, H/840);
+  wrap3d.style.left=(mobile?50:63)+'%'; wrap3d.style.top=(mobile?70:55)+'%';
+  $('.hero3d-wrap').style.perspectiveOrigin=`${mobile?50:63}% ${mobile?45:30}%`;
+}
+addEventListener('resize',resize); resize();
+function sprite(r,g,b,soft=.42){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d');
+  const gr=x.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,`rgba(${r},${g},${b},1)`);gr.addColorStop(soft,`rgba(${r},${g},${b},.5)`);gr.addColorStop(1,`rgba(${r},${g},${b},0)`);
+  x.fillStyle=gr;x.fillRect(0,0,64,64);return c;}
+const FL=[sprite(255,240,190,.3),sprite(255,170,60),sprite(240,90,20),sprite(150,30,8)], SMK=sprite(185,172,160,.2), SPK=sprite(255,210,130,.25);
+const embers=document.createElement('canvas'); embers.width=512; embers.height=384;
+(function(){const im=new Image(); im.onload=()=>{const x=embers.getContext('2d'); x.drawImage(im,0,0,512,384);
+  x.globalCompositeOperation='destination-in'; x.save(); x.translate(256,192); x.scale(1,.75); const g=x.createRadialGradient(0,0,0,0,0,256); g.addColorStop(0,'rgba(0,0,0,1)'); g.addColorStop(.42,'rgba(0,0,0,1)'); g.addColorStop(.7,'rgba(0,0,0,.55)'); g.addColorStop(.88,'rgba(0,0,0,.15)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  x.fillStyle=g; x.fillRect(-256,-256,512,512); x.restore();}; im.src='img/h-brasas.webp';})();
+function drawQuadImage(c,img,Q,alpha){const N=24, sw=img.width, sh=img.height; c.globalAlpha=alpha;
+  for(let i=0;i<N;i++){const v0=i/N, v1=(i+1)/N, [ax,ay]=quad(0,v0,Q), [bx,by]=quad(1,v0,Q), [dx,dy]=quad(0,v1,Q);
+    const sy=v0*sh, shh=sh/N+1; c.setTransform(DPR*(bx-ax)/sw,DPR*(by-ay)/sw,DPR*(dx-ax)/shh,DPR*(dy-ay)/shh,DPR*ax,DPR*ay);
+    c.drawImage(img,0,sy,sw,shh,0,0,sw,shh);}
+  c.setTransform(DPR,0,0,DPR,0,0); c.globalAlpha=1;}
+const fireVid=$('#fireVid');
+const RC=rnd(11), coals=Array.from({length:120},()=>({u:.03+RC()*.94,v:.03+RC()*.94,r:.5+RC()*.9,ph:RC()*6.3,h:RC()}));
+const RS=rnd(5), saltPts=Array.from({length:46},()=>({u:RS(),v:RS(),d:RS()*.5}));
+let flames=[], smoke=[], sparks=[], flameAcc=0, smokeAcc=0, flare=0;
+let mx=0,my=0,cmx=0,cmy=0;
+stageEl.addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5; my=e.clientY/innerHeight-.5;});
+function quad(u,v,Q){const x0=lerp(Q[0][0],Q[1][0],u),y0=lerp(Q[0][1],Q[1][1],u),x1=lerp(Q[3][0],Q[2][0],u),y1=lerp(Q[3][1],Q[2][1],u);return [lerp(x0,x1,v),lerp(y0,y1,v)];}
+
+let sTarget=0, sCur=0, last=performance.now(), heroVisible=true;
+function readScroll(){
+  const total = Math.max(1, scrolly.offsetHeight - innerHeight);
+  const p = clamp((scrollY - scrolly.offsetTop)/total) || 0;
+  sTarget = p*STEPS.length;
+  $('#pbar').style.width = (p*100)+'%';
+  $('#railFill').style.height = `calc(${p*100}% - ${p*28}px)`;
+  setStep(Math.min(STEPS.length-1, Math.floor(p*STEPS.length*0.9999)));
+  $('#hint').style.opacity = p>0.02?0:1;
+  nav.classList.toggle('solid', scrollY > total*0.98 + scrolly.offsetTop);
+  heroVisible = scrollY < scrolly.offsetTop + scrolly.offsetHeight;
+}
+addEventListener('scroll',readScroll,{passive:true}); readScroll();
+
+function frame(now){
+  requestAnimationFrame(frame);
+  const dt=Math.min(.05,(now-last)/1000); last=now;
+  if(!heroVisible) return;
+  if(!W||!H) resize();
+  sCur = lerp(sCur,sTarget, reduced?1:1-Math.pow(.002,dt));
+  if(!isFinite(sCur)) sCur=sTarget||0;
+  const s=sCur, t=now/1000;
+  cmx+=(mx-cmx)*.05; cmy+=(my-cmy)*.05;
+
+  /* ---- pose de la escena ---- */
+  const heat=clamp(.18+s*1.05);
+  const d=clamp((s-1)/.7), db=easeOutBounce(d);
+  let sz = s<1 ? 900 : lerp(620, TH/2, db);
+  const yaw = lerp(30,5,ease(d)), tiltIn=(1-d)*-28;
+  const f=clamp(s-3), fa=ease(clamp(f/.25)), fb=ease(clamp((f-.25)/.5)), fcx=ease(clamp((f-.75)/.25));
+  const lift=Math.sin(Math.PI*fb)*165, flip=180*fb;
+  sz+=lift;
+  const rest=[-290,195,5], eng=[-150,-12,TH/2];
+  let fx,fy,fz,fspin=0;
+  if(f<=0||f>=1){fx=rest[0];fy=rest[1];fz=rest[2];}
+  else if(f<.25){fx=lerp(rest[0],eng[0],fa);fy=lerp(rest[1],eng[1],fa);fz=lerp(rest[2],eng[2],fa)+Math.sin(Math.PI*fa)*55;}
+  else if(f<.75){fx=eng[0];fy=eng[1];fz=eng[2]+lift;fspin=flip;}
+  else {fx=lerp(eng[0],rest[0],fcx);fy=lerp(eng[1],rest[1],fcx);fz=lerp(eng[2],rest[2],fcx)+Math.sin(Math.PI*fcx)*55;fspin=180*(1-fcx);}
+  // pequeño "temblor" de la carne al chisporrotear
+  const jig = (s>1.7&&s<3)? Math.sin(t*38)*.35 : 0;
+  hSteak.style.transform=`translate3d(${jig}px,-12px,${sz}px) rotateX(${flip+tiltIn}deg) rotateZ(${yaw}deg)`;
+  hFork.style.transform=`translate3d(${fx}px,${fy}px,${fz}px) rotateX(${fspin}deg)`;
+  const shA = s<1?0: clamp(1-(sz-TH/2)/520);
+  hShadow.style.opacity=(.6*shA).toFixed(3);
+  hShadow.style.transform=`translate3d(0,-12px,2px) rotateZ(${yaw}deg) scale(${1+lift/500})`;
+  // cocción
+  const cookUnder=clamp((s-1.7)/1.3), cookTop=clamp((s-1.8)/1.2)*.85, cookAfter=clamp((s-3.8)/1.2);
+  hWarm.style.opacity=cookTop.toFixed(3);
+  layers.forEach(L=>{
+    const amt=Math.max(cookUnder*clamp((L.k-.25)/.75), cookAfter*clamp((.75-L.k)/.75), cookTop*.25);
+    if(Math.abs(amt-L.last)>.03){L.last=amt; L.im.style.filter=`sepia(${(amt*.9).toFixed(2)}) brightness(${(1-.5*amt).toFixed(2)}) saturate(${(1+.4*amt).toFixed(2)})`;}
+  });
+  hGrill.style.filter=`drop-shadow(0 0 ${(3+7*heat).toFixed(1)}px rgba(255,110,30,${(.45*heat).toFixed(2)})) brightness(${(.85+.25*heat).toFixed(2)})`;
+  // cámara
+  const fin=ease(clamp(s-4));
+  const tilt=lerp(58,47,fin)+cmy*-6, rz=lerp(-14,-4,fin)+cmx*8+Math.sin(t*.25)*1.5;
+  wrap3d.style.transform=`scale(${(K*lerp(1,1.08,fin)).toFixed(4)}) rotateX(${tilt}deg) rotateZ(${rz}deg)`;
+
+  /* ---- fuego (detrás de la parrilla) ---- */
+  const sr=stageEl.getBoundingClientRect();
+  const Q=mks.map(m=>{const r=m.getBoundingClientRect();return [r.left-sr.left,r.top-sr.top];});
+  const qw=Math.hypot(Q[2][0]-Q[3][0],Q[2][1]-Q[3][1]);
+  // llamaradas cuando cae la grasa
+  if(s>1.7&&s<3.2&&Math.random()<dt*1.1) flare=Math.min(1.4,flare+.8+Math.random()*.6);
+  if(f>.3&&f<.7) flare=Math.max(flare,1.2);
+  if(s>1&&s<1.75&&d>.6) flare=Math.max(flare,.7);
+  flare=Math.max(0,flare-dt*1.4);
+  const c=bc;
+  c.globalCompositeOperation='source-over'; c.globalAlpha=1;
+  const cx=(Q[0][0]+Q[2][0])/2, cy=(Q[0][1]+Q[2][1])/2;
+  const g=c.createRadialGradient(cx,cy,10,cx,cy,Math.max(W,H)*.85);
+  g.addColorStop(0,`rgb(${(80+90*heat+40*flare)|0},${(32+30*heat+15*flare)|0},14)`); g.addColorStop(.38,'#26150c'); g.addColorStop(1,'#0b0705');
+  c.fillStyle=g; c.fillRect(0,0,W,H);
+  // brasas reales (foto) en perspectiva bajo la parrilla + respiración del calor
+  const QB=[quad(-.12,-.1,Q),quad(1.12,-.1,Q),quad(1.12,1.1,Q),quad(-.12,1.1,Q)];
+  drawQuadImage(c,embers,QB,clamp(.25+.75*heat));
+  c.globalCompositeOperation='lighter';
+  drawQuadImage(c,embers,QB,clamp(heat*(.18+.14*Math.sin(t*1.7)+.08*Math.sin(t*4.3))+flare*.15));
+  c.globalAlpha=clamp(.3*heat+.25*flare);
+  const [hx,hy]=quad(.5,.5,Q); c.drawImage(FL[2],hx-qw*.8,hy-qw*.5,qw*1.6,qw*1);
+  // llamas reales (vídeo) colocadas sobre las brasas, por detrás de la parrilla
+  if(fireVid){ const fw=qw*1.55, fh=fw*.5625*(1+.35*flare);
+    fireVid.style.width=fw+'px'; fireVid.style.height=fh+'px';
+    fireVid.style.transform=`translate(${(hx-fw/2).toFixed(1)}px,${(hy+qw*.18-fh).toFixed(1)}px)`;
+    fireVid.style.opacity=clamp(heat*1.05-.05+flare*.2).toFixed(2); }
+  // partículas de llama
+  if(!reduced){
+    flameAcc+=dt*(18+120*flare)*heat*(mobile?.6:1);
+    while(flameAcc>1){flameAcc--; const u=.08+Math.random()*.84, v=.1+Math.random()*.85, [x,y]=quad(u,v,Q);
+      const big=1+flare*.6; flames.push({x,y,vx:(Math.random()-.5)*qw*.04,vy:-(qw*(.16+Math.random()*.16))*big,life:0,max:.45+Math.random()*.55*big,sz:qw*(.05+Math.random()*.05)*big,ph:Math.random()*6});}
+  }
+  flames=flames.filter(p=>(p.life+=dt)<p.max);
+  flames.forEach(p=>{const a=p.life/p.max; p.x+=(p.vx+Math.sin(t*9+p.ph)*qw*.03)*dt; p.y+=p.vy*dt;
+    const sz=p.sz*(1-a*.55); c.globalAlpha=(1-a)*.9; c.drawImage(FL[a<.25?0:a<.55?1:a<.8?2:3],p.x-sz/2,p.y-sz*.7,sz,sz*1.4);});
+  c.globalAlpha=1; c.globalCompositeOperation='source-over';
+
+  /* ---- humo, chispas y sal (delante) ---- */
+  const o=fc; o.clearRect(0,0,W,H);
+  const st=hSteak.getBoundingClientRect(), sx0=st.left-sr.left, sy0=st.top-sr.top;
+  if(!reduced){
+    const cookingSmoke = s>1.6 ? .5+.5*Math.sin(Math.PI*clamp((s-1.6)/3)) + flare*.5 : 0;
+    smokeAcc+=dt*24*cookingSmoke*(mobile?.6:1);
+    while(smokeAcc>1){smokeAcc--; smoke.push({x:sx0+st.width*(.2+Math.random()*.6),y:sy0+st.height*(.3+Math.random()*.4),vx:(Math.random()-.5)*20,vy:-30-Math.random()*40,life:0,max:2.2+Math.random()*1.5,r:qw*.05});}
+    if(Math.random()<dt*(6*heat+18*flare)){const [x,y]=quad(.1+Math.random()*.8,.2+Math.random()*.7,Q); sparks.push({x,y,vx:(Math.random()-.5)*60,vy:-120-Math.random()*200,life:0,max:.8+Math.random()*.9,sz:2+Math.random()*3});}
+  }
+  smoke=smoke.filter(p=>(p.life+=dt)<p.max);
+  smoke.forEach(p=>{const a=p.life/p.max; p.x+=(p.vx+Math.sin(t+p.y*.02)*12)*dt; p.y+=p.vy*dt; const r=p.r*(1+a*2.5);
+    o.globalAlpha=.15*Math.sin(Math.PI*a); o.drawImage(SMK,p.x-r,p.y-r,r*2,r*2);});
+  o.globalCompositeOperation='lighter';
+  sparks=sparks.filter(p=>(p.life+=dt)<p.max);
+  sparks.forEach(p=>{const a=p.life/p.max; p.x+=(p.vx+Math.sin(t*7+p.y*.05)*30)*dt; p.y+=p.vy*dt; o.globalAlpha=1-a; o.drawImage(SPK,p.x-p.sz*2,p.y-p.sz*2,p.sz*4,p.sz*4);});
+  // llamas que asoman por delante en las llamaradas
+  if(flare>.5){o.globalAlpha=clamp((flare-.5)*.18); flames.forEach((p,i)=>{if(i%3) return; const a=p.life/p.max; if(a>.6) return; const sz=p.sz*.9; o.drawImage(FL[1],p.x-sz/2,p.y-sz*.8,sz,sz*1.5);});}
+  o.globalCompositeOperation='source-over';
+  // sal en escamas al final
+  const ss=clamp((s-4.05)/.6);
+  if(ss>0&&ss<1){o.fillStyle='#fff';
+    saltPts.forEach(p=>{const k=clamp((ss-p.d)/.5); if(k<=0||k>=1) return; const tx=sx0+st.width*(.2+p.u*.6), ty=sy0+st.height*(.25+p.v*.5);
+      o.globalAlpha=1-k*.4; o.fillRect(tx+(1-k)*8, lerp(ty-st.height*.9,ty,k), 2.6, 2.6);});}
+  o.globalAlpha=1;
+}
+requestAnimationFrame(frame);
+
+/* ---------- marquee ---------- */
+const words=['T-Bone steak','✦','Tomahawk de rubia gallega','✦','Wagyu A5','✦','Cochinillo asado','✦','Pulpo a la brasa','✦','Tartufo de Dubái','✦'];
+$('#mq').innerHTML = [...words,...words].map(w=>`<span>${w}</span>`).join('');
+
+/* ---------- LOGO 3D ---------- */
+(function(){
+  const st=$('#logoStage'), lg=$('#logo3d'), stars=[...document.querySelectorAll('#lStars i')];
+  st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    lg.style.transform=`rotateY(${x*28}deg) rotateX(${-y*22}deg)`;});
+  st.addEventListener('pointerleave',()=>lg.style.transform='');
+  let lit=false;
+  new IntersectionObserver(es=>{ if(es[0].isIntersecting&&!lit){ lit=true; stars.forEach((s,i)=>setTimeout(()=>s.classList.add('on'),400+i*220)); } },{threshold:.4}).observe(st);
+  if(!reduced) setInterval(()=>{ if(!lit) return; const s=stars[Math.floor(Math.random()*5)]; s.classList.remove('on'); setTimeout(()=>s.classList.add('on'),250); },2600);
+})();
+
+/* ---------- VITRINA: carrusel circular plano, gira en sentido horario cada 2,5 s ---------- */
+(function(){
+  const ring=$('#ring'), N=CUTS.length, STEP=Math.PI*2/N, FRONT=Math.PI/2;
+  const cards=CUTS.map((c,i)=>{const b=document.createElement('button'); b.type='button'; b.className='rcard';
+    b.innerHTML=`<h3>${esc(c.n)}</h3><b>${esc(c.p)}</b>`; b.onclick=()=>bring(i); ring.appendChild(b); return b;});
+  let base=FRONT, target=FRONT, paused=false, lastT=performance.now(), timer=0, active=-1;
+  // la pieza i está en el ángulo base - i·STEP; sumar a "target" = girar en sentido horario
+  function bring(i){ const d=((FRONT+i*STEP-target)%(2*Math.PI)+2*Math.PI)%(2*Math.PI); target+=d; timer=0; }
+  ring.addEventListener('pointerenter',e=>{ if(e.pointerType==='mouse') paused=true; });
+  ring.addEventListener('pointerleave',()=>paused=false);
+  function loop(now){
+    requestAnimationFrame(loop);
+    const dt=Math.min(.05,(now-lastT)/1000); lastT=now;
+    const r=ring.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return;
+    if(!paused && !reduced){ timer+=dt; if(timer>=2.5){ timer=0; target+=STEP; } }
+    base+=(target-base)*(1-Math.pow(.003,dt));
+    const w=ring.clientWidth, h=ring.clientHeight, sm=w<600, Rx=sm? w*.33 : Math.min(w*.4,330), Ry=sm? h*.33 : Math.min(h*.32,Rx*.5);
+    let best=-1, bi=0;
+    cards.forEach((el,i)=>{
+      const a=base-i*STEP, x=Math.cos(a)*Rx, y=Math.sin(a)*Ry, depth=(Math.sin(a)+1)/2;
+      const diff=Math.atan2(Math.sin(a-FRONT),Math.cos(a-FRONT)), act=Math.max(0,1-Math.abs(diff)/(STEP*.6));
+      const sc=.68+.24*depth+.2*act;
+      el.style.transform=`translate(${(w/2+x-el.offsetWidth/2).toFixed(1)}px,${(h/2+y-el.offsetHeight/2).toFixed(1)}px) scale(${sc.toFixed(3)})`;
+      el.style.opacity=(.35+.65*depth).toFixed(3); el.style.zIndex=Math.round(depth*100+act*60);
+      if(act>best){best=act;bi=i;}
+    });
+    if(bi!==active){ active=bi; cards.forEach((el,i)=>el.classList.toggle('on',i===bi));
+      $('#ringIdx').textContent=`${String(bi+1).padStart(2,'0')} / ${String(N).padStart(2,'0')}`; }
+  }
+  requestAnimationFrame(loop);
+})();
+
+/* ---------- COCHINILLO: vídeo realista girando + controles (3D como reserva) ---------- */
+const PORC={1:{p:'22 €',t:'1 ración',z:1.3,btn:'Encargar 1 ración →',note:'La ración se sirve viernes, sábados y domingos.'},
+            2:{p:'70 €',t:'½ cochinillo · 3 pers.',z:1.12,btn:'Encargar ½ cochinillo →',note:'Medio cochinillo para 3 personas, por encargo con 24 h de antelación.'},
+            3:{p:'140 €',t:'Entero · 6 pers.',z:1,btn:'Encargar cochinillo entero →',note:'Cochinillo entero para 6 personas, por encargo con 24 h de antelación.'}};
+const pigApi={toggle(){}, step(){}, auto:true};
+(function(){
+  const box=$('#pig3d'), inner=$('#pigInner'); let started=false, porc=1, closeUp=false;
+  const setZoom=()=>{ inner.style.transform=`scale(${(PORC[porc].z*(closeUp?1.35:1)).toFixed(2)})`; };
+  document.querySelectorAll('.porc').forEach(b=>b.onclick=()=>{
+    porc=+b.dataset.i; document.querySelectorAll('.porc').forEach(x=>{x.classList.toggle('on',x===b); x.setAttribute('aria-checked',x===b);});
+    const P=PORC[porc], bd=$('#pigBadge'); bd.innerHTML=`<b>${P.p}</b><span>${P.t}</span>`; bd.classList.add('pop'); setTimeout(()=>bd.classList.remove('pop'),350);
+    $('#cochiWa').textContent=P.btn; $('#porcNote').textContent=P.note; setZoom(); });
+  $('#cochiWa').onclick=e=>{ e.preventDefault(); const f=$('#resForm'); f.cochinillo.selectedIndex=porc;
+    $('#reservas').scrollIntoView({behavior:'smooth'}); setTimeout(()=>f.nombre.focus({preventScroll:true}),900); };
+  window.pigOink=()=>{ const o=$('#oink'); o.classList.add('show'); clearTimeout(o._t); o._t=setTimeout(()=>o.classList.remove('show'),900);
+    inner.classList.remove('hop'); void inner.offsetWidth; inner.classList.add('hop'); };
+  $('#pigOink').onclick=()=>pigOink();
+  $('#pigZoom').onclick=()=>{ closeUp=!closeUp; $('#pigZoom').classList.toggle('on',closeUp); setZoom(); };
+  $('#pigPlay').onclick=()=>{ pigApi.auto=!pigApi.auto; const b=$('#pigPlay'); b.textContent=pigApi.auto?'❚❚':'▶'; b.setAttribute('aria-label',pigApi.auto?'Pausar el giro':'Reanudar el giro'); pigApi.toggle(pigApi.auto); };
+  $('#pigPrev').onclick=()=>pigApi.step(-1); $('#pigNext').onclick=()=>pigApi.step(1);
+  setZoom();
+  new IntersectionObserver(es=>{ if(es[0].isIntersecting&&!started){ started=true; tryVideo(); } },{rootMargin:'400px'}).observe(box);
+
+  function tryVideo(){
+    const v=document.createElement('video'); v.className='pig-vid'; v.muted=true; v.playsInline=true; v.loop=true; v.preload='auto'; v.setAttribute('aria-hidden','true');
+    let ok=false;
+    v.addEventListener('loadeddata',()=>{ if(ok) return; ok=true; inner.classList.add('vid'); inner.appendChild(v); if(pigApi.auto&&!reduced) v.play().catch(()=>{}); setupVideo(v); });
+    v.addEventListener('error',()=>loadThree(box,inner),{once:true});
+    v.src='img/cochinillo.mp4?v=1';
+  }
+  function setupVideo(v){
+    pigApi.toggle=on=>{ on? v.play().catch(()=>{}) : v.pause(); };
+    pigApi.step=d=>{ const D=v.duration||5; v.currentTime=((v.currentTime+d*D/8)%D+D)%D; };
+    let drag=null;
+    box.addEventListener('pointerdown',e=>{ drag={x:e.clientX,m:0}; v.pause(); });
+    addEventListener('pointermove',e=>{ if(!drag) return; const dx=e.clientX-drag.x; drag.x=e.clientX; drag.m+=Math.abs(dx);
+      const D=v.duration||5; v.currentTime=((v.currentTime+dx*D/box.clientWidth)%D+D)%D; });
+    addEventListener('pointerup',()=>{ if(!drag) return; if(drag.m<6) pigOink(); if(pigApi.auto&&!reduced) v.play().catch(()=>{}); drag=null; });
+    new IntersectionObserver(es=>{ if(!es[0].isIntersecting) v.pause(); else if(pigApi.auto&&!reduced) v.play().catch(()=>{}); }).observe(box);
+  }
+})();
+function loadThree(box,inner){
+  const sc=document.createElement('script'); sc.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  sc.onload=()=>{ try{ initPig(box,inner); }catch(e){ console.warn('3D no disponible',e); } }; document.head.appendChild(sc);
+}
+(function(){
+  window.initPig=function(box,inner){
+    const T=THREE;
+    const renderer=new T.WebGLRenderer({antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
+    renderer.shadowMap.enabled=true; renderer.shadowMap.type=T.PCFSoftShadowMap;
+    renderer.outputEncoding=T.sRGBEncoding; renderer.toneMapping=T.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
+    inner.appendChild(renderer.domElement);
+    const scene=new T.Scene();
+    const cam=new T.PerspectiveCamera(30,1,.1,100);
+    scene.add(new T.HemisphereLight(0xffe6c8,0x2a1208,.8));
+    const key=new T.DirectionalLight(0xffd6a8,1.6); key.position.set(4,8,5); key.castShadow=true;
+    key.shadow.mapSize.set(1024,1024); Object.assign(key.shadow.camera,{left:-5,right:5,top:5,bottom:-5}); key.shadow.radius=5; scene.add(key);
+    const rim=new T.PointLight(0xff7a2f,2.2,22); rim.position.set(-5,3,-4); scene.add(rim);
+    const fill=new T.PointLight(0xffc080,.7,22); fill.position.set(3,1.5,6); scene.add(fill);
+
+    // piel asada con textura de crujiente
+    const cv=document.createElement('canvas'); cv.width=cv.height=512; const x=cv.getContext('2d');
+    const gr=x.createLinearGradient(0,0,0,512); gr.addColorStop(0,'#6e2a0b'); gr.addColorStop(.35,'#a9531a'); gr.addColorStop(.7,'#d68934'); gr.addColorStop(1,'#e8b060');
+    x.fillStyle=gr; x.fillRect(0,0,512,512);
+    for(let i=0;i<1400;i++){x.fillStyle=`rgba(${50+Math.random()*50|0},${18+Math.random()*20|0},4,${Math.random()*.22})`; x.beginPath(); x.ellipse(Math.random()*512,Math.random()*512,2+Math.random()*9,1+Math.random()*3,Math.random()*3,0,7); x.fill();}
+    for(let i=0;i<500;i++){x.fillStyle=`rgba(255,${210+Math.random()*40|0},140,${Math.random()*.3})`; x.fillRect(Math.random()*512,Math.random()*512,2,2);}
+    const skinMap=new T.CanvasTexture(cv); skinMap.encoding=T.sRGBEncoding;
+    const skin=new T.MeshPhysicalMaterial({map:skinMap,roughness:.32,clearcoat:.9,clearcoatRoughness:.22});
+    const crisp=new T.MeshPhysicalMaterial({color:0x5e2208,roughness:.4,clearcoat:.7,clearcoatRoughness:.3});
+    const dark=new T.MeshStandardMaterial({color:0x1a0a04,roughness:.6});
+    const M=(geo,mat,p,s,r)=>{const m=new T.Mesh(geo,mat); if(p)m.position.set(...p); if(s)m.scale.set(...s); if(r)m.rotation.set(...r); m.castShadow=true; m.receiveShadow=true; return m;};
+    const S=new T.SphereGeometry(1,48,32);
+
+    const pig=new T.Group(), body=new T.Group(); pig.add(body);
+    body.add(M(S,skin,[0,0,0],[1.55,.78,.92]));
+    [[.78,-.04,.5],[.78,-.04,-.5]].forEach(p=>body.add(M(S,skin,p,[.62,.56,.42])));
+    [[-.9,-.02,.48],[-.9,-.02,-.48]].forEach(p=>body.add(M(S,skin,p,[.78,.62,.46])));
+    const head=new T.Group(); head.position.set(1.55,.12,0); body.add(head);
+    head.add(M(S,skin,[0,0,0],[.74,.66,.68]));
+    head.add(M(new T.CylinderGeometry(.27,.33,.4,32),skin,[.62,-.03,0],null,[0,0,Math.PI/2]));
+    head.add(M(new T.CylinderGeometry(.27,.27,.05,32),crisp,[.83,-.03,0],null,[0,0,Math.PI/2]));
+    [.085,-.085].forEach(z=>head.add(M(new T.SphereGeometry(.05,12,12),dark,[.86,-.01,z])));
+    // ojos cerrados y felices
+    [.27,-.27].forEach(z=>{const e=M(new T.TorusGeometry(.075,.016,8,20,Math.PI),dark,[.5,.25,z],null,[0,z>0?-1.05:1.05,Math.PI]); head.add(e);});
+    // orejas
+    const ears=[.3,-.3].map(z=>{const g=new T.Group(); g.position.set(.05,.52,z); const m=M(new T.ConeGeometry(.22,.46,20),crisp,[.12,.15,0],[1,1,.35],[0,0,-.9]); g.add(m); head.add(g); return g;});
+    // manzana en la boca
+    const apple=new T.Group(); apple.position.set(.92,-.32,0); head.add(apple);
+    apple.add(M(S,new T.MeshPhysicalMaterial({color:0xc8141b,roughness:.25,clearcoat:1,clearcoatRoughness:.1}),[0,0,0],[.3,.28,.3]));
+    apple.add(M(new T.CylinderGeometry(.018,.022,.16,8),new T.MeshStandardMaterial({color:0x4a2a12}),[.3,.03,0],null,[0,0,-Math.PI/2]));
+    apple.add(M(S,new T.MeshStandardMaterial({color:0x3f9a2c,roughness:.5}),[.34,.08,.06],[.14,.02,.07],[0,0,-.5]));
+    // patas
+    [[1.18,-.6,.33],[1.18,-.6,-.33]].forEach(p=>{body.add(M(new T.CylinderGeometry(.13,.11,.7,16),skin,p,null,[0,0,Math.PI/2])); body.add(M(S,crisp,[p[0]+.38,p[1],p[2]],[.12,.11,.11]));});
+    [[-1.32,-.6,.33],[-1.32,-.6,-.33]].forEach(p=>{body.add(M(new T.CylinderGeometry(.11,.14,.7,16),skin,p,null,[0,0,Math.PI/2])); body.add(M(S,crisp,[p[0]-.38,p[1],p[2]],[.12,.11,.11]));});
+    // rabito rizado
+    const pts=[]; for(let i=0;i<=40;i++){const a=i/40*Math.PI*3.2; pts.push(new T.Vector3(-1.5-i*.006-.1*Math.sin(a),.18+.1*Math.cos(a)+i*.002,.1*Math.sin(a)*.9));}
+    const tail=M(new T.TubeGeometry(new T.CatmullRomCurve3(pts),60,.032,8),crisp); body.add(tail);
+    pig.position.y=.0;
+
+    // fuente con guarnición
+    const plate=new T.Group(); plate.position.y=-.86;
+    plate.add(M(new T.CylinderGeometry(3,2.75,.14,72),new T.MeshPhysicalMaterial({color:0xf3ece0,roughness:.18,clearcoat:.6}),[0,0,0]));
+    plate.add(M(new T.TorusGeometry(2.98,.06,12,90),new T.MeshPhysicalMaterial({color:0xc9a25a,roughness:.3,metalness:.6}),[0,.07,0],null,[Math.PI/2,0,0]));
+    const potato=new T.MeshPhysicalMaterial({color:0xb8741f,roughness:.5,clearcoat:.4}), herb=new T.MeshStandardMaterial({color:0x3e7a2a,roughness:.6}), tomato=new T.MeshPhysicalMaterial({color:0xd8261c,roughness:.2,clearcoat:1});
+    for(let i=0;i<16;i++){const a=i/16*Math.PI*2, r=2.25+(i%2)*.25, px=Math.cos(a)*r, pz=Math.sin(a)*r*.95;
+      if(i%4===3) plate.add(M(S,tomato,[px,.2,pz],[.16,.15,.16]));
+      else plate.add(M(S,potato,[px,.2,pz],[.3,.2,.24],[0,a,0]));
+      plate.add(M(S,herb,[px*.92,.1,pz*.92],[.25,.03,.09],[0,a+.6,0]));}
+    const stage=new T.Group(); stage.add(plate); stage.add(pig); scene.add(stage);
+
+    // vapor
+    const sc2=document.createElement('canvas'); sc2.width=sc2.height=64; const sx=sc2.getContext('2d'); const sg=sx.createRadialGradient(32,32,0,32,32,32); sg.addColorStop(0,'rgba(255,255,255,.9)'); sg.addColorStop(1,'rgba(255,255,255,0)'); sx.fillStyle=sg; sx.fillRect(0,0,64,64);
+    const steamTex=new T.CanvasTexture(sc2);
+    const steam=Array.from({length:22},(_,i)=>{const sp=new T.Sprite(new T.SpriteMaterial({map:steamTex,transparent:true,opacity:0,depthWrite:false})); sp.userData={t:Math.random()*3,x:(Math.random()-.5)*2.2,z:(Math.random()-.5)*.8}; stage.add(sp); return sp;});
+
+    // interacción: arrastrar para girar, tocar para que salte
+    let rotY=-.5, vel=.35, drag=null, lastX=0, hop=0, wiggle=0, drop=1;
+    box.addEventListener('pointerdown',e=>{drag={x:e.clientX,moved:0}; lastX=e.clientX;});
+    addEventListener('pointermove',e=>{ if(!drag) return; const dx=e.clientX-lastX; lastX=e.clientX; drag.moved+=Math.abs(dx); rotY+=dx*.01; vel=dx*.6; });
+    addEventListener('pointerup',()=>{ if(drag&&drag.moved<6){ hop=1; wiggle=1; pigOink(); } drag=null; });
+    pigApi.step=d=>{ rotY+=d*.8; }; $('#pigOink').addEventListener('click',()=>{hop=1;wiggle=1;});
+
+    function size(){const w=box.clientWidth,h=box.clientHeight; renderer.setSize(w,h,false); cam.aspect=w/h;
+      const dist=w<600?10.4:8.4; cam.position.set(0,dist*.4,dist); cam.lookAt(0,-.35,0); cam.updateProjectionMatrix();}
+    addEventListener('resize',size); size();
+    let visible=true; new IntersectionObserver(es=>visible=es[0].isIntersecting).observe(box);
+    let lt=performance.now();
+    (function loop(now){
+      requestAnimationFrame(loop); if(!visible) return;
+      const dt=Math.min(.05,(now-lt)/1000); lt=now; const t=now/1000;
+      if(!drag){ vel+= ((pigApi.auto?.35:0)-vel)*dt*1.5; rotY+=vel*dt*(reduced?0:1); }
+      stage.rotation.y=rotY;
+      drop=Math.max(0,drop-dt*1.3); const dropY=drop>0? easeOutBounce(1-drop):1;
+      hop=Math.max(0,hop-dt*1.6); const hy=Math.sin(Math.PI*(1-hop))*(hop>0?1:0)*.9;
+      pig.position.y=(1-dropY)*3 + hy;
+      const squash=hop>0?1+Math.sin(Math.PI*2*(1-hop))*.08:1+Math.sin(t*2.2)*.012;
+      body.scale.set(1/Math.sqrt(squash),squash,1/Math.sqrt(squash));
+      wiggle=Math.max(0,wiggle-dt*.9);
+      ears.forEach((g,i)=>g.rotation.z=Math.sin(t*(wiggle>0?18:2.5)+i)*(.06+.35*wiggle));
+      tail.rotation.x=Math.sin(t*(wiggle>0?20:3))*(.2+.6*wiggle);
+      apple.rotation.y=Math.sin(t*1.6)*.15; apple.position.y=-.32+Math.sin(t*3)*.01;
+      head.rotation.z=Math.sin(t*1.3)*.03+wiggle*Math.sin(t*14)*.08;
+      steam.forEach(sp=>{const u=sp.userData; u.t+=dt; const k=(u.t%3)/3; sp.position.set(u.x+Math.sin(u.t*1.3)*.2, .6+k*2.6+pig.position.y, u.z); const s=.5+k*1.4; sp.scale.set(s,s,1); sp.material.opacity=Math.sin(Math.PI*k)*.22;});
+      renderer.render(scene,cam);
+    })(lt);
+  }
+})();
+
+/* ---------- CARTA ---------- */
+const tabs=$('#tabs'), dishes=$('#dishes'), q=$('#q'), note=$('#catNote');
+let curCat=MENU[1].c;
+function dishHTML(d,i,cat){
+  return `<div class="dish" style="animation-delay:${Math.min(i,12)*45}ms">
+    ${cat?`<span class="cat">${esc(cat)}</span>`:''}
+    <h3>${esc(d[0])}${d[3]?`<span class="tag">${esc(d[3])}</span>`:''}</h3><span class="price">${esc(d[2])} €</span>${d[1]?`<p>${esc(d[1])}</p>`:''}</div>`;
+}
+function render(){
+  const term=q.value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  if(term){
+    [...tabs.children].forEach(b=>b.classList.remove('on'));
+    const hits=[]; MENU.forEach(s=>s.items.forEach(d=>{ const h=(d[0]+' '+d[1]).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); if(h.includes(term)) hits.push([d,s.c]); }));
+    note.textContent = `${hits.length} resultado${hits.length===1?'':'s'} para “${q.value.trim()}”`;
+    dishes.innerHTML = hits.length? hits.map(([d,c],i)=>dishHTML(d,i,c)).join('') : '<p class="empty">No encontramos ese plato. Prueba con otra palabra.</p>';
+    return;
+  }
+  const sec=MENU.find(s=>s.c===curCat);
+  [...tabs.children].forEach(b=>b.classList.toggle('on',b.textContent===curCat));
+  note.textContent = sec.note||'';
+  dishes.innerHTML = sec.items.map((d,i)=>dishHTML(d,i)).join('');
+}
+MENU.forEach(s=>{const b=document.createElement('button');b.className='tab';b.textContent=s.c;b.onclick=()=>{q.value='';curCat=s.c;render();};tabs.appendChild(b);});
+q.addEventListener('input',render);
+render();
+
+/* ---------- reveal + contadores ---------- */
+const fmt=n=>n>=10000?n.toLocaleString('es-ES'):String(n).replace(/\B(?=(\d{3})+(?!\d))/g, n>=1900&&n<2100?'':'.');
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('[data-count]').forEach(el=>{
+    const end=+el.dataset.count, from=+(el.dataset.from||0), suf=el.dataset.suffix||'', t0=performance.now();
+    const tick=n=>{const k=clamp((n-t0)/1600); el.textContent=fmt(Math.round(lerp(from,end,ease(k))))+suf; if(k<1) requestAnimationFrame(tick);};
+    requestAnimationFrame(tick);
+  });
+  io.unobserve(e.target);
+}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- galería + lightbox ---------- */
+const lb=$('#lightbox');
+document.querySelectorAll('.gallery figure').forEach(f=>f.onclick=()=>{ const im=f.querySelector('img'); lb.querySelector('img').src=im.src; lb.querySelector('img').alt=im.alt; lb.classList.add('open'); });
+lb.onclick=()=>lb.classList.remove('open');
+addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('open'); });
+
+/* ---------- reservas → WhatsApp ---------- */
+const f=$('#resForm');
+['13:00','13:30','14:00','14:30','15:00','20:30','21:00','21:30','22:00'].forEach(h=>f.hora.add(new Option(h)));
+for(let i=1;i<=20;i++) f.personas.add(new Option(i+(i===1?' persona':' personas')));
+f.personas.selectedIndex=1;
+f.fecha.min=new Date().toISOString().slice(0,10);
+f.onsubmit=e=>{
+  e.preventDefault();
+  const d=new FormData(f);
+  const fecha=new Date(d.get('fecha')+'T12:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  let msg=`Hola, quiero reservar en Asador Labella:\n• Nombre: ${d.get('nombre')}\n• Día: ${fecha}\n• Hora: ${d.get('hora')}\n• ${d.get('personas')}\n• Zona: ${d.get('zona')}`;
+  if(d.get('cochinillo')!=='No') msg+=`\n• Cochinillo: ${d.get('cochinillo')}`;
+  if(d.get('comentarios')) msg+=`\n• Comentarios: ${d.get('comentarios')}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank','noopener');
+};
+</script>
+</body>
+</html>
