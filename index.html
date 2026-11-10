@@ -941,11 +941,24 @@ const pigApi={toggle(){}, step(){}, auto:true};
   new IntersectionObserver(es=>{ if(es[0].isIntersecting&&!started){ started=true; tryVideo(); } },{rootMargin:'400px'}).observe(box);
 
   function tryVideo(){
-    const v=document.createElement('video'); v.className='pig-vid'; v.muted=true; v.playsInline=true; v.loop=true; v.preload='auto'; v.setAttribute('aria-hidden','true');
-    let ok=false;
-    v.addEventListener('loadeddata',()=>{ if(ok) return; ok=true; inner.classList.add('vid'); inner.appendChild(v); if(pigApi.auto&&!reduced) v.play().catch(()=>{}); setupVideo(v); });
-    v.addEventListener('error',()=>loadThree(box,inner),{once:true});
-    v.src='img/cochinillo.mp4?v=1';
+    // El vídeo se coloca YA en la página (con una imagen de portada) y se pide reproducir:
+    // los móviles (iPhone, ahorro de datos/batería) no descargan un vídeo que no está en la página.
+    const v=document.createElement('video'); v.className='pig-vid';
+    ['muted','playsinline','webkit-playsinline','loop','disablepictureinpicture'].forEach(a=>v.setAttribute(a,''));
+    v.muted=true; v.playsInline=true; v.loop=true; v.preload='auto'; v.setAttribute('aria-hidden','true');
+    v.poster='img/cochinillo-poster.jpg';
+    v.addEventListener('error',()=>{ v.remove(); inner.classList.remove('vid'); loadThree(box,inner); },{once:true});
+    const src=document.createElement('source'); src.src='img/cochinillo.mp4?v=2'; src.type='video/mp4';
+    src.addEventListener('error',()=>{ v.remove(); inner.classList.remove('vid'); loadThree(box,inner); },{once:true});
+    v.appendChild(src);
+    inner.classList.add('vid'); inner.appendChild(v);
+    v.load();
+    setupVideo(v);
+    if(pigApi.auto&&!reduced) v.play().catch(()=>{
+      // reproducción automática bloqueada (modo ahorro): arranca con el primer toque en la página
+      const go=()=>{ if(pigApi.auto) v.play().catch(()=>{}); removeEventListener('pointerdown',go); removeEventListener('touchstart',go); };
+      addEventListener('pointerdown',go,{once:true}); addEventListener('touchstart',go,{once:true,passive:true});
+    });
   }
   function setupVideo(v){
     pigApi.toggle=on=>{ on? v.play().catch(()=>{}) : v.pause(); };
