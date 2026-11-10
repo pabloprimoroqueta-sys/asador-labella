@@ -968,7 +968,11 @@ const pigApi={toggle(){}, step(){}, auto:true};
     addEventListener('pointermove',e=>{ if(!drag) return; const dx=e.clientX-drag.x; drag.x=e.clientX; drag.m+=Math.abs(dx);
       const D=v.duration||5; v.currentTime=((v.currentTime+dx*D/box.clientWidth)%D+D)%D; });
     addEventListener('pointerup',()=>{ if(!drag) return; if(drag.m<6) pigOink(); if(pigApi.auto&&!reduced) v.play().catch(()=>{}); drag=null; });
-    new IntersectionObserver(es=>{ if(!es[0].isIntersecting) v.pause(); else if(pigApi.auto&&!reduced) v.play().catch(()=>{}); }).observe(box);
+    let visible=false;
+    new IntersectionObserver(es=>{ visible=es[0].isIntersecting; if(!visible) v.pause(); else if(pigApi.auto&&!reduced) v.play().catch(()=>{}); }).observe(box);
+    // vigilante: si debería estar girando y está parado (carga lenta, carrera de eventos), lo reanuda
+    const kick=()=>{ if(visible&&pigApi.auto&&!reduced&&!drag&&v.paused&&v.readyState>=2) v.play().catch(()=>{}); };
+    v.addEventListener('canplay',kick); setInterval(kick,1000);
   }
 })();
 function loadThree(box,inner){
