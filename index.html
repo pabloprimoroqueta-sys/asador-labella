@@ -44,7 +44,7 @@ body.no-ribbon .nav{top:0}
 .burger{display:none;background:none;border:0;color:var(--ink);font-size:1.6rem;cursor:pointer}
 
 /* ---------- HERO SCROLLY ---------- */
-.scrolly{position:relative;height:600vh}
+.scrolly{position:relative;height:500vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .fx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
 .fire-vid{position:absolute;left:0;top:0;object-fit:cover;mix-blend-mode:screen;pointer-events:none;opacity:0;-webkit-mask-image:radial-gradient(ellipse 50% 58% at 50% 62%,#000 35%,rgba(0,0,0,.6) 65%,transparent 100%);mask-image:radial-gradient(ellipse 50% 58% at 50% 62%,#000 35%,rgba(0,0,0,.6) 65%,transparent 100%)}
@@ -554,8 +554,7 @@ const WHATSAPP = '34608282455'; // número para reservas por WhatsApp (sin + ni 
 
 const STEPS = [
   {k:'Desde 1992',   t:'Enciende la brasa.',   s:'Brasas vivas y llama alta: así empieza cada servicio en Asador Labella desde 1992.',         n:'Brasa viva',       m:'Asador Labella'},
-  {k:'La pieza',     t:'Llega el T-Bone.',     s:'Pieza madurada de nuestra vitrina, directa a la parrilla. Escucha cómo chisporrotea.',       n:'T-Bone steak',     m:'1.250 g · 56 €'},
-  {k:'Sellado',      t:'La brasa trabaja.',    s:'Abajo se forma la costra mientras la grasa cae sobre el fuego y aviva la llama.',            n:'Sellado',          m:'Costra dorada'},
+  {k:'La pieza',     t:'Llega el T-Bone.',     s:'Pieza madurada de nuestra vitrina, directa a la brasa: abajo se forma la costra mientras la grasa aviva la llama.', n:'T-Bone steak', m:'1.250 g, 56 €'},
   {k:'La vuelta',    t:'Vuelta y vuelta.',     s:'El tenedor la levanta y le da la vuelta: marcas de parrilla por fuera, jugosa por dentro.',  n:'Una sola vuelta',  m:'Al punto que pidas'},
   {k:'A la mesa',    t:'Al punto, a la mesa.', s:'Un toque de sal en escamas y al centro para compartir. Si sobra, te lo llevas sin coste.',   n:'Para compartir',   m:'Llévatelo sin coste'}
 ];
@@ -563,8 +562,8 @@ const STEPS = [
 // Carnes de la vitrina (nombre y peso/precio, como en las pizarras)
 const CUTS = [
   {n:'Presa Wagyu A5 · Japón', p:'30 € / 100 g'},
-  {n:'Tomahawk de rubia gallega', p:'1.250 g · 58 €'},
-  {n:'T-Bone steak', p:'1.250 g · 56 €'},
+  {n:'Tomahawk de rubia gallega', p:'1.250 g, 58 €'},
+  {n:'T-Bone steak', p:'1.250 g, 56 €'},
   {n:'Vaca Jersey · U.K.', p:'8 € / 100 g'},
   {n:'Vaca rubia gallega', p:'7 € / 100 g'},
   {n:'Vaca Simmental · Alemania', p:'7 € / 100 g'},
@@ -600,12 +599,12 @@ const MENU = [
   ['Entrecotte de Angus','', '27,50'],
   ['Secreto de Angus','', '32,00'],
   ['Solomillo de añojo','', '26,00'],
-  ['Tomahawk de vaca rubia gallega (1.250 g)','', '58,00','Estrella'],
+  ['Tomahawk de vaca rubia gallega, 1.250 g','', '58,00','Estrella'],
   ['T-Bone steak, 1.250 g','', '56,00','Estrella'],
   ['Pollo al curry','', '13,00'],
   ['Taco de pulpo a la brasa, 250 g','', '22,95'],
   ['Librito Love cheese Labella (2 personas)','Lomo alto de vaca seleccionada relleno de 3 quesos', '28,00'],
-  ['Parrillada ibérica (900 g aprox.)','', '36,00'],
+  ['Parrillada ibérica, 900 g aprox.','', '36,00'],
   ['Lagarto Duroc','', '15,00'],
   ['Hamburguesa Wagyu','', '16,00'],
   ['Atún "vuelta y vuelta"','', '19,95'],
@@ -800,7 +799,7 @@ function frame(now){
   if(!W||!H) resize();
   sCur = lerp(sCur,sTarget, reduced?1:1-Math.pow(.002,dt));
   if(!isFinite(sCur)) sCur=sTarget||0;
-  const s=sCur, t=now/1000;
+  const s=sCur<1?sCur:sCur<2?1+(sCur-1)*2:sCur+1, t=now/1000;   // 4 pasos -> línea de tiempo de 5 tramos
   cmx+=(mx-cmx)*.05; cmy+=(my-cmy)*.05;
 
   /* ---- pose de la escena ---- */
